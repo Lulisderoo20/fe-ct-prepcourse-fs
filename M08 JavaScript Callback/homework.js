@@ -5,19 +5,42 @@ function mayuscula(nombre) {
    // Debe devolver el mismo nombre, pero con la primera letra en mayúscula.
    // [Ejemplo]: "mario" ----> "Mario".
    // Tu código:
+   
+  if (typeof nombre !== 'string') {
+    throw new Error('El argumento debe ser un string');
+  }
+   
+   if(nombre.length === 0){ 
+      throw new Error('No recibio parametro');
+   }
+   
+   var primeraLetra = nombre.charAt(0).toUpperCase();
+  var restoNombre = nombre.slice(1);
+   
+   return primeraLetra + restoNombre
+  
 }
+
+
+
 
 function invocarCallback(cb) {
    // Invoca/ejecuta el callback `cb`.
    // [NOTA]: no debes reotrnar nada.
    // Tu código:
+   
+   cb()
 }
+
+
 
 function operacionMatematica(num1, num2, cb) {
    // En este ejercicio recibirás dos números y un callback.
    // El callback realiza una operación matemática, por lo que necesita de los dos números.
    // Retorna el resultado del callback pasándole como parámetros los números.
    // Tu código:
+   
+   return cb(num1, num2)
 }
 
 function sumarArray(arrayOfNumbers, cb) {
