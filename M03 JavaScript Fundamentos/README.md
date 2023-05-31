@@ -34,10 +34,10 @@ Para ejecutar los tests de las homeworks debes:
 
 En esta Homework podrás poner en práctica:
 
--  Tipos de datos
--  Variables
--  Funciones
--  Operadores
+-  Tipos de datos //string, number, boolean
+-  Variables //var, let , const
+-  Funciones 
+-  Operadores + - * / % = == === &&
 
 ---
 
