@@ -6,15 +6,41 @@ function deObjetoAarray(objeto) {
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+   var arrayPadre = [];
+   for( var  prop in objeto) {
+      var arrayHijo= [];
+      arrayHijo.push(prop); //prop asi se accede al nombre de la propiedad (o sea la clave)
+      arrayHijo.push(objeto[prop]);  //objeto[prop] asi se accede al VALOR, pero cuando queremos redefinir el valor es:
+
+//objeto[prop] = askdjasdkasdjasd
+
+      arrayPadre.push(arrayHijo);
+   }
+   return arrayPadre;
 }
 
 function numberOfCharacters(string) {
    // La función recibe un string. Debes recorrerlo y retornar un objeto donde cada propiedad es una de las
    // letras del string, y su valor es la cantidad de veces que se repite en el string.
-   // Las letras deben estar en orden alfabético.
+   // Las letras deben estar en orden alfabético. //sort()
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
+let arrayString = [];
+let objetoAretornar = {};
+
+for(let i=0; i<string.length; i++) {
+   arrayString.push(string[i]);  //pusheamos en un array  [a, a, d, f, g, f, g]
 }
+arrayString.sort();  // [a, a, d, f, f, g, g]
+
+for(let i=0; i<arrayString.length; i++) { //iteramos el array para guardarlo en el objeto como propiedad y su valor
+   let letras = objetoAretornar[arrayString[i]]; //guardamos en una variable el valor de la propiedad "arrayString[i]", si no existe esa propiedad, entonces su valor va a ser 0.
+   objetoAretornar[arrayString[i]] = letras + 1;
+}
+return objetoAretornar
+}
+   
+  //objetoAretornar  -> {a:2, d:1, f:2}
 
 function capToFront(string) {
    // Recibes un string con algunas letras en mayúscula y otras en minúscula.
@@ -22,7 +48,22 @@ function capToFront(string) {
    // Retornar el string.
    // [EJEMPLO]: soyHENRY ---> HENRYsoy
    // Tu código:
+var stringMay='';
+var stringMin='';
+
+   for(let i=0; i<string.length; i++){
+      if(string[i]===string[i].toUpperCase()){
+         stringMay += string[i]  
+      }
+      else {
+         stringMin += string[i]; 
+      }
+   }
+   return stringMay + stringMin;
+
 }
+
+
 
 function asAmirror(frase) {
    // Recibes una frase. Tu tarea es retornar un nuevo string en el que el orden de las palabras sea el mismo.
@@ -71,3 +112,60 @@ module.exports = {
    sortArray,
    buscoInterseccion,
 };
+
+
+
+
+// var obj ={};
+// for( let i=0; i<string.length; i++){
+//    if (objeto[string[i]] === undefined) {
+//       objeto[string[i]] = 1;
+//    } else {
+//       objeto[string[i]]++;
+//    }
+// }
+// var objetoOrdenado = {};
+// Object.keys(objeto).sort().forEach(function(key) {
+//    objetoOrdenado[key] = objeto[key];
+// });
+// return objetoOrdenado;
+// }
+
+
+// let arrayString = [];
+// let objetoAretornar = {};
+
+// for(let i=0; i<string.length; i++) {
+//    arrayString.push(string[i]);  //pusheamos en un array
+// }
+// arrayString.sort();
+
+// for(let i=0; i<arrayString.length; i++) { //iteramos el array para guardarlo en el objeto como propiedad y su valor
+//    let letras =objetoAretornar[arrayString[i]]; 
+//    objetoAretornar[arrayString[i]] = letras + 1;
+// }
+// return objetoAretornar
+
+
+// function numberOfCharacters(string) {
+//    let objetoAretornar = {};
+
+//    for(let i = 0; i < string.length; i++) {
+//       let letra = string[i];
+//       if (objetoAretornar[letra]) {
+//          objetoAretornar[letra] += 1;
+//       } else {
+//          objetoAretornar[letra] = 1;
+//       }
+//    }
+
+//    let propiedadesOrdenadas = Object.keys(objetoAretornar).sort();
+//    let objetoOrdenado = {};
+
+//    for(let i = 0; i < propiedadesOrdenadas.length; i++) {
+//       let propiedad = propiedadesOrdenadas[i];
+//       objetoOrdenado[propiedad] = objetoAretornar[propiedad];
+//    }
+
+//    return objetoOrdenado;
+// }
