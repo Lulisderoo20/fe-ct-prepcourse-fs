@@ -20,6 +20,7 @@ class Persona {
          edad:this.edad,
          domicilio:this.domicilio
       }
+      
    }
 }
 
