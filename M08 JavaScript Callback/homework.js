@@ -38,12 +38,12 @@ function operacionMatematica(num1, num2, cb) {
 }
 
 //PLUS
-function suma( num1, num2){ 
+// function suma( num1, num2){ 
    
-   return num1 + num2 };
+//    return num1 + num2 };
 
-var sumarcb = operacionMatematica(sumar(3, 4));
-sumarcb(); // 7
+// var sumarcb = operacionMatematica(suma(3, 4));
+// sumarcb(); // 7
 
 function sumarArray(arrayOfNumbers, cb) {
    // Recibes un arreglo de números y un callback.
@@ -51,6 +51,10 @@ function sumarArray(arrayOfNumbers, cb) {
    // Este resultado debes pasárselo como argumento al callback recibido.
    // [NOTA]: no debes reotrnar nada.
    // Tu código:
+   var suma = arrayOfNumbers.reduce(function(acc, current) {
+      return acc + current;
+    }, 0);
+    cb(suma);
 }
 
 function forEach(array, cb) {
@@ -58,6 +62,9 @@ function forEach(array, cb) {
    // Debes iterar sobre el arreglo, y por cada elemento ejecutar el callback.
    // Debes pasarle el elemento como argumento al callback.
    // Tu código:
+   for (var i = 0; i < array.length; i++) {
+      cb(array[i]);
+    }
 }
 
 function map(array, cb) {
@@ -65,12 +72,22 @@ function map(array, cb) {
    // Tiene que guardar el resultado devuelto por el callback en cada elemento dentro de un nuevo arreglo.
    // Retorna el nuevo arreglo.
    // Tu código:
+   var resultado = [];
+  for (var i = 0; i < array.length; i++) {
+    var elemento = cb(array[i]);
+    resultado.push(elemento);
+  }
+  return resultado;
 }
 
 function filter(arrayOfStrings) {
    // Debes identificar todos los elementos el arreglo que comiencen con la letra "a".
    // Luego retorna un nuevo arreglo con estos elementos.
    // Tu código:
+   var resultado = arrayOfStrings.filter(function(elemento) {
+      return elemento.charAt(0) === "a";
+    });
+    return resultado;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/

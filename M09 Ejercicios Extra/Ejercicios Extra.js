@@ -34,8 +34,8 @@ for(let i=0; i<string.length; i++) {
 arrayString.sort();  // [a, a, d, f, f, g, g]
 
 for(let i=0; i<arrayString.length; i++) { //iteramos el array para guardarlo en el objeto como propiedad y su valor
-   let letras = objetoAretornar[arrayString[i]]; //guardamos en una variable el valor de la propiedad "arrayString[i]", si no existe esa propiedad, entonces su valor va a ser 0.
-   objetoAretornar[arrayString[i]] = letras + 1;
+   let letras = objetoAretornar[arrayString[i]] || 0; //guardamos en una variable el valor de la propiedad "arrayString[i]", si no existe esa propiedad, entonces su valor va a ser 0.
+   objetoAretornar[arrayString[i]] = letras + 1 ;
 }
 return objetoAretornar
 }
@@ -70,18 +70,32 @@ function asAmirror(frase) {
    // La diferencia es que cada palabra estará escrita al inverso.
    // [EJEMPLO]: "The Henry Challenge is close!"  ---> "ehT yrneH egnellahC si !esolc"
    // Tu código:
+   var palabras = frase.split(" ");
+   var resultado = palabras.map(function(palabra) {
+     return palabra.split("").reverse().join("");
+   });
+   return resultado.join(" ");
 }
 
 function capicua(numero) {
    // Si el número que recibes es capicúa debes retornar el string: "Es capicua".
    // Caso contrario: "No es capicua".
    // Tu código:
+   var numeroString = numero.toString();
+   var numeroReverso = numeroString.split("").reverse().join("");
+   if (numeroString === numeroReverso) {
+     return "Es capicua";
+   } else {
+     return "No es capicua";
+   }
 }
 
 function deleteAbc(string) {
    // Tu tarea es eliminar las letras "a", "b" y "c" del string recibido.
    // Retorna el string sin estas letras.
    // Tu código:
+   var resultado = string.replace(/[abc]/g, "");
+   return resultado;
 }
 
 function sortArray(arrayOfStrings) {
@@ -90,6 +104,10 @@ function sortArray(arrayOfStrings) {
    // de la longitud de cada string.
    // [EJEMPLO]: ["You", "are", "beautiful", "looking"]  ---> [“You", "are", "looking", "beautiful"]
    // Tu código:
+   var resultado = arrayOfStrings.sort(function(a, b) {
+      return a.length - b.length;
+    });
+    return resultado;
 }
 
 function buscoInterseccion(array1, array2) {
@@ -99,6 +117,10 @@ function buscoInterseccion(array1, array2) {
    // Si no tienen elementos en común, retornar un arreglo vacío.
    // [PISTA]: los arreglos no necesariamente tienen la misma longitud.
    // Tu código:
+   var resultado = array1.filter(function(elemento) {
+      return array2.includes(elemento);
+    });
+    return resultado;
 }
 
 /*⚠️ NO MODIFIQUES NADA DEBAJO DE ESTO ⚠️*/
