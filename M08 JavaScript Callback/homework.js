@@ -17,6 +17,7 @@ function mayuscula(nombre) {
      var restoNombre = nombre.slice(1);
      
      return primeraLetra + restoNombre
+     //return nombre[0].toUpperCase()+ nombre.slice(1)
 }
 
 function invocarCallback(cb) {
@@ -51,10 +52,16 @@ function sumarArray(arrayOfNumbers, cb) {
    // Este resultado debes pasárselo como argumento al callback recibido.
    // [NOTA]: no debes reotrnar nada.
    // Tu código:
-   var suma = arrayOfNumbers.reduce(function(acc, current) {
-      return acc + current;
-    }, 0);
-    cb(suma);
+   // var suma = arrayOfNumbers.reduce(function(acc, current) {
+   //    return acc + current;
+   //  }, 0);
+   //  cb(suma);
+    var suma= 0;
+    for(var i=0; i<arrayOfNumbers;i++){
+      suma+= arrayOfNumbers[i];
+
+    }
+    cb(suma)
 }
 
 function forEach(array, cb) {
@@ -62,9 +69,12 @@ function forEach(array, cb) {
    // Debes iterar sobre el arreglo, y por cada elemento ejecutar el callback.
    // Debes pasarle el elemento como argumento al callback.
    // Tu código:
-   for (var i = 0; i < array.length; i++) {
-      cb(array[i]);
-    }
+   // for (var i = 0; i < array.length; i++) {
+   //    cb(array[i]);
+   //  }
+   array.forEach(function(el){
+      cb(el)
+   })
 }
 
 function map(array, cb) {

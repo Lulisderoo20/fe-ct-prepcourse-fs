@@ -1,23 +1,40 @@
-/*⚠️ NO MODIFIQUES EL NOMBRE DE LAS DECLARACIONES ⚠️*/
 
-function deObjetoAarray(objeto) {
+
+function deObjetoAarray(objeto) {  //LO QUE HACE OBJECT.ENTRIES()
    // Recibes un objeto. Tendrás que crear un arreglo de arreglos.
    // Cada elemento del arreglo padre será un nuevo arreglo que contendrá dos elementos.
    // Estos elementos debe ser cada par clave:valor del objeto recibido.
    // [EJEMPLO]: {D: 1, B: 2, C: 3} ---> [['D', 1], ['B', 2], ['C', 3]].
    // Tu código:
+
+//FOR IN
    var arrayPadre = [];
    for( var  prop in objeto) {
       var arrayHijo= [];
       arrayHijo.push(prop); //prop asi se accede al nombre de la propiedad (o sea la clave)
-      arrayHijo.push(objeto[prop]);  //objeto[prop] asi se accede al VALOR, pero cuando queremos redefinir el valor es:
+      arrayHijo.push(objeto[prop]);  //objeto[prop] asi se accede al VALOR, o sea que justamente cuando queremos redefinir el valor de la propiedad es:
 
 //objeto[prop] = askdjasdkasdjasd
 
       arrayPadre.push(arrayHijo);
    }
    return arrayPadre;
+
+//FOR COMUN   
+      // const resultado = [];
+      // const keys = Object.keys(objeto);
+      // for (let i = 0; i < keys.length; i++) {
+      //   const clave = keys[i];
+      //   const valor = objeto[clave];
+      //   resultado.push([clave, valor]);
+      // }
+      // return resultado;
+    
+    
 }
+
+var lucia={l:u, c:i, a:o};
+console.log(deObjetoAarray(lucia))
 
 function numberOfCharacters(string) {
    // La función recibe un string. Debes recorrerlo y retornar un objeto donde cada propiedad es una de las
@@ -25,18 +42,21 @@ function numberOfCharacters(string) {
    // Las letras deben estar en orden alfabético. //sort()
    // [EJEMPLO]: "adsjfdsfsfjsdjfhacabcsbajda" ---> { a: 5, b: 2, c: 2, d: 4, f: 4, h:1, j: 4, s: 5 }
    // Tu código:
-let arrayString = [];
+
 let objetoAretornar = {};
+let arrayString = string.split("");
 
-for(let i=0; i<string.length; i++) {
-   arrayString.push(string[i]);  //pusheamos en un array  [a, a, d, f, g, f, g]
-}
-arrayString.sort();  // [a, a, d, f, f, g, g]
+arrayString.sort(); // [a, d, s, f, d, s, f, s...]
 
-for(let i=0; i<arrayString.length; i++) { //iteramos el array para guardarlo en el objeto como propiedad y su valor
-   let letras = objetoAretornar[arrayString[i]] || 0; //guardamos en una variable el valor de la propiedad "arrayString[i]", si no existe esa propiedad, entonces su valor va a ser 0.
-   objetoAretornar[arrayString[i]] = letras + 1 ;
+for( let letra of arrayString){
+let letras= objetoAretornar[letra] || 0; 
+objetoAretornar[letra] = letras + 1 ;
 }
+
+// for(let i=0; i<arrayString.length; i++) { //iteramos el array para guardarlo en el objeto como propiedad y su valor
+//    let letra = objetoAretornar[arrayString[i]] || 0; //guardamos en una variable el valor de la propiedad "arrayString[i]", si no existe esa propiedad, entonces su valor va a ser 0.
+//    objetoAretornar[arrayString[i]] = letra + 1 ;
+// }
 return objetoAretornar
 }
    
@@ -51,14 +71,18 @@ function capToFront(string) {
 var stringMay='';
 var stringMin='';
 
-   for(let i=0; i<string.length; i++){
-      if(string[i]===string[i].toUpperCase()){
-         stringMay += string[i]  
-      }
-      else {
-         stringMin += string[i]; 
-      }
-   }
+for(let letra of string){
+   if(letra===letra.toUpperCase()) {stringMay += letra}
+   else{stringMin+=letra}
+}
+   // for(let i=0; i<string.length; i++){
+   //    if(string[i]===string[i].toUpperCase()){
+   //       stringMay += string[i]  
+   //    }
+   //    else {
+   //       stringMin += string[i]; 
+   //    }
+   // }
    return stringMay + stringMin;
 
 }
